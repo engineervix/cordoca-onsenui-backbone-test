@@ -6,7 +6,7 @@ The fake company data was generated courtesy of **joke2k**'s [Faker](https://git
 
 I used the [Bootstrapping](http://backbonejs.org/#FAQ-bootstrap) approach to have the data available when rendering the page.
 
-When you run the app, it displays the first company profile, and you can go to the next one on `leftswipe`. Similarly, you can display the previous one on `rightswipe`. Well, at least this is what is supposed to happen, but :disappointed: ... see the 30 second video below
+When you run the app, it displays the first company profile, and you can go to the next one on `leftswipe`. Similarly, you can display the previous one on `rightswipe`. Well, at least this is what is supposed to happen, but :disappointed: ... see what's actually happening below
 
 <!-- https://gifs.com/gif/cordova-backbone-app-multiple-rendering-issues-rRQYj6 -->
 <!-- https://www.youtube.com/watch?v=1pKQNJ7rhh8 -->
