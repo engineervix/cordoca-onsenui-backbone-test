@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html lang="en">
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <!-- OnsenUI Stylesheets -->
+    <link rel="stylesheet" href="vendor/onsenui/css/onsenui.min.css">
+    <link rel="stylesheet" href="vendor/onsenui/css/onsen-css-components.min.css">
+
+    <!-- Other Stylesheets -->
+
+    <!-- App Stylesheet(s) -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <title></title>
+</head>
+
+<body>
+    <div class="the-app"></div>
+
+    <script type="text/template" id="home">
+        <ons-splitter>
+            <ons-splitter-side id="menu-home" side="left" width="220px" collapse>
+                <ons-page>
+                    <ons-list>
+                        <ons-list-header class="splitter-side-heading">
+                            <h3>ACME Company Viewer</h3>
+                        </ons-list-header>
+                        <ons-list-item id="li-home" tappable>
+                            <div class="left">
+                                <ons-icon icon="fa-newspaper" class="list-item__icon"></ons-icon>
+                            </div>
+                            <div class="center">
+                                Companies
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item id="li-favourites" tappable>
+                            <div class="left">
+                                <ons-icon icon="md-folder-star" class="list-item__icon"></ons-icon>
+                            </div>
+                            <div class="center">
+                                Favourites
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item id="li-settings" tappable>
+                            <div class="left">
+                                <ons-icon icon="md-settings" class="list-item__icon"></ons-icon>
+                            </div>
+                            <div class="center">
+                                Settings
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item id="li-about" tappable>
+                            <div class="left">
+                                <ons-icon icon="md-info" class="list-item__icon"></ons-icon>
+                            </div>
+                            <div class="center">
+                                About
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item id="li-bugs" tappable>
+                            <div class="left">
+                                <ons-icon icon="md-bug" class="list-item__icon"></ons-icon>
+                            </div>
+                            <div class="center">
+                                Report Bugs
+                            </div>
+                        </ons-list-item>
+                    </ons-list>
+                </ons-page>
+            </ons-splitter-side>
+            <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+        </ons-splitter>
+
+        <template id="home.html">
+            <% all_items = companies; %>
+            <% company = _.findWhere(companies, {id: "1"}); %>
+            <% if (typeof company !== "undefined") { %>
+            <ons-page>
+
+                <ons-toolbar>
+                    <div class="left">
+                        <ons-toolbar-button onclick="fn.open()">
+                            <ons-icon icon="md-menu"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                    <div class="center">
+                        <% print("Company № " + company.id) %>
+                    </div>
+                    <div class="right">
+                        <ons-toolbar-button onclick="void(0)">
+                            <ons-icon icon="md-star-outline"></ons-icon>
+                        </ons-toolbar-button>
+                        <ons-toolbar-button onclick="void(0)">
+                            <ons-icon icon="md-share"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                </ons-toolbar>
+
+                <ons-gesture-detector>
+                    <% current_id = Number(company.id); %>
+                    <div class="company">
+                        <h3 id="itm_<%=current_id%>"><%=company.name%> <%=company.suffix%></h3>
+
+                        <em>Lorem ipsum</em>, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web
+                        designs. The passage is attributed to an unknown typesetter in the 15<sup>th</sup> century who is thought to
+                        have scrambled parts of <em>Cicero's De Finibus Bonorum</em> et Malorum for use in a type specimen book. 
+                        It usually begins with:
+
+                        <blockquote>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                        dolore magna aliqua.
+                        </blockquote>
+
+                        The purpose of <em>lorem ipsum</em> is to create a natural looking block of text (sentence, paragraph, page, etc.)
+                        that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler
+                        text can be very useful when the focus is meant to be on design, not content. <br>
+
+                        The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets,
+                        and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the
+                        web; on templates, websites, and stock designs. Richard McClintock, a Latin scholar from Hampden-Sydney College, is
+                        credited with discovering the source behind the ubiquitous filler text — <em>lorem ipsum</em>.
+
+                        <hr>
+
+                        <ons-list>
+                            <ons-list-item expandable>
+                                <div class="left">
+                                    <ons-icon icon="fa-chess" class="list-item__icon"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    Company Catchphrase
+                                </div>
+                                <div class="expandable-content">
+                                    <%=company.catchphrase%>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item expandable>
+                                <div class="left">
+                                    <ons-icon icon="fa-box-open" class="list-item__icon"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    Company Branding
+                                </div>
+                                <div class="expandable-content">
+                                    <%=company.branding%>
+                                </div>
+                            </ons-list-item>
+                        </ons-list>
+
+                    </div>
+                </ons-gesture-detector>
+
+            </ons-page>
+            <% } %>
+        </template>
+
+        <template id="favourites.html">
+            <ons-page>
+                <ons-toolbar>
+                    <div class="left">
+                        <ons-toolbar-button onclick="fn.open()">
+                            <ons-icon icon="md-menu"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                    <div class="center">
+                        Favourites
+                    </div>
+                </ons-toolbar>
+                <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                    Favourites come here
+                </p>
+            </ons-page>
+        </template>
+
+        <template id="settings.html">
+            <ons-page>
+                <ons-toolbar>
+                    <div class="left">
+                        <ons-toolbar-button onclick="fn.open()">
+                            <ons-icon icon="md-menu"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                    <div class="center">
+                        Settings
+                    </div>
+                </ons-toolbar>
+                <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                    This is where we'll add a bunch of settings!
+                </p>
+            </ons-page>
+        </template>
+
+        <template id="bugs.html">
+            <ons-page>
+                <ons-toolbar>
+                    <div class="left">
+                        <ons-toolbar-button onclick="fn.open()">
+                            <ons-icon icon="md-menu"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                    <div class="center">
+                        Bug Tracker
+                    </div>
+                </ons-toolbar>
+                <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                    Let's squash these bugs!
+                </p>
+            </ons-page>
+        </template>
+
+        <template id="about.html">
+            <ons-page>
+                <ons-toolbar>
+                    <div class="left">
+                        <ons-toolbar-button onclick="fn.open()">
+                            <ons-icon icon="md-menu"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                    <div class="center">
+                        About
+                    </div>
+                </ons-toolbar>
+                <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                    Get to know what this app is all about!
+                </p>
+            </ons-page>
+        </template>
+        <% print("<sc" + "ript type='text/javascript'>"); %>
+
+        console.log("App is running ... ")
+
+        window.fn = {};
+
+        window.fn.open = function() {
+                var menu = document.getElementById('menu-home');
+                menu.open();
+        };
+
+        window.fn.load = function(page) {
+                var content = document.getElementById('content');
+                var menu = document.getElementById('menu-home');
+                content.load(page)
+                        .then(menu.close.bind(menu));
+        };
+
+        $( "#li-home" ).click(function() {
+            fn.load('home.html');
+        });
+        $( "#li-about" ).click(function() {
+            fn.load('about.html');
+        });
+        $( "#li-settings" ).click(function() {
+            fn.load('settings.html');
+        });
+        $( "#li-bugs" ).click(function() {
+            fn.load('bugs.html');
+        });
+        $( "#li-favourites" ).click(function() {
+            fn.load('favourites.html');
+        });
+
+        var all_IDs = _.pluck(all_items, 'id');
+
+        $(document).on('swipeleft', '.company', function(event) {
+            console.log('-------------------SHOW NEXT------------------------');
+            console.log(event.type+' is detected. Show Next Company if it Exists');
+            the_next_id = 1 + Number($("h3[id^=itm]").attr('id').replace("itm_", ""));
+            if (the_next_id <= _.last(all_IDs) ) {
+                console.log('Next ID: ' + the_next_id);
+                next_company = _.findWhere(all_items, {id: the_next_id.toString()});
+                $(this).html("<h3 id=\"itm_" + the_next_id + "\">" + next_company.name + " " + next_company.suffix + "</h3> <em>Lorem ipsum</em>, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15<sup>th</sup> century who is thought to have scrambled parts of <em>Cicero's De Finibus Bonorum</em> et Malorum for use in a type specimen book. It usually begins with: <blockquote> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </blockquote> The purpose of <em>lorem ipsum</em> is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content. <br> The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Richard McClintock, a Latin scholar from Hampden-Sydney College, is credited with discovering the source behind the ubiquitous filler text — <em>lorem ipsum</em>. <hr> <ons-list> <ons-list-item expandable> <div class=\"left\"> <ons-icon icon=\"fa-chess\" class=\"list-item__icon\"></ons-icon> </div> <div class=\"center\"> Company Catchphrase </div> <div class=\"expandable-content\">" + next_company.catchphrase + " </div> </ons-list-item> <ons-list-item expandable> <div class=\"left\"> <ons-icon icon=\"fa-box-open\" class=\"list-item__icon\"></ons-icon> </div> <div class=\"center\"> Company Branding </div> <div class=\"expandable-content\">" + next_company.branding + " </div> </ons-list-item> </ons-list>");
+                $('ons-toolbar .center').html("Company № " + the_next_id);
+                console.log("I've rendered the next company");
+                console.log('-------------------DONE------------------------');
+            } else {
+                console.log("Ain't No Next Compmany. I've reached the end");
+            }
+        });
+
+        $(document).on('swiperight', '.company', function(event) {
+            console.log('-------------------SHOW PREVIOUS------------------------');
+            console.log(event.type+' is detected. Show Previous Company if it Exists');
+            the_previous_id = -1 + Number($("h3[id^=itm]").attr('id').replace("itm_", ""));
+            if (the_previous_id >= _.first(all_IDs) ) {
+                console.log('Previous ID: ' + the_previous_id);
+                previous_company = _.findWhere(all_items, {id: the_previous_id.toString()});
+                $(this).html("<h3 id=\"itm_" + the_previous_id + "\">" + previous_company.name + " " + previous_company.suffix + "</h3> <em>Lorem ipsum</em>, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15<sup>th</sup> century who is thought to have scrambled parts of <em>Cicero's De Finibus Bonorum</em> et Malorum for use in a type specimen book. It usually begins with: <blockquote> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </blockquote> The purpose of <em>lorem ipsum</em> is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content. <br> The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Richard McClintock, a Latin scholar from Hampden-Sydney College, is credited with discovering the source behind the ubiquitous filler text — <em>lorem ipsum</em>. <hr> <ons-list> <ons-list-item expandable> <div class=\"left\"> <ons-icon icon=\"fa-chess\" class=\"list-item__icon\"></ons-icon> </div> <div class=\"center\"> Company Catchphrase </div> <div class=\"expandable-content\">" + previous_company.catchphrase + " </div> </ons-list-item> <ons-list-item expandable> <div class=\"left\"> <ons-icon icon=\"fa-box-open\" class=\"list-item__icon\"></ons-icon> </div> <div class=\"center\"> Company Branding </div> <div class=\"expandable-content\">" + previous_company.branding + " </div> </ons-list-item> </ons-list>");
+                $('ons-toolbar .center').html("Company № " + the_previous_id);
+                console.log("I've rendered the previous company");
+                console.log('-------------------DONE------------------------');
+            } else {
+                console.log("Ain't No Previous Company. I'm at the beginning");
+            }
+        });
+
+        <% print("</sc"+"ript>"); %>
+    
+    </script>
+
+    <!-- Cordova Scipt(s) -->
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- OnsenUI JS -->
+    <script type="text/javascript" src="vendor/onsenui/js/onsenui.min.js"></script> <!-- OnsenUI v2.10.6 -->
+
+    <!-- Vendor Scrips -->
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script> <!-- v3.3.1 -->
+    <script type="text/javascript" src="vendor/underscore/underscore-min.js"></script> <!-- v1.9.1 -->
+    <script type="text/javascript" src="vendor/backbone/backbone-min.js"></script> <!-- v1.3.3 -->
+
+    <!-- App Scripts -->
+    <script type="text/javascript" src="js/models/sample_model.js"></script>
+    <script type="text/javascript" src="js/collections/sample_collection.js"></script>
+    <script type="text/javascript" src="js/views/sample_view.js"></script>
+    <script type="text/javascript" src="js/routers/app_router.js"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+astroid==2.1.0
+autopep8==1.4.3
+colorama==0.4.1
+Faker==1.0.1
+isort==4.3.4
+lazy-object-proxy==1.3.1
+mccabe==0.6.1
+pep8==1.7.1
+pycodestyle==2.4.0
+pylint==2.2.2
+python-dateutil==2.7.5
+simplejson==3.16.0
+six==1.12.0
+text-unidecode==1.2
+titlecase==0.12.0
+wrapt==1.10.11
