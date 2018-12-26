@@ -29,9 +29,24 @@ cordova platform add browser
 ### Run the App
 
 ```bash
+
+# 1. on your device or emulator
 cordova run android
+
+
+# 1.1 if you want to see logs (console output) from your device
+
+# 1.1.1 (optional) clear the logs
+adb logcat -c
+
+# 1.1.2 show the console output
+adb logcat | grep -i "chromium:"
+
+# 2. in the browser
+cordova run browser
 ```
 
-### Problem
 
-- Need help in fixing the problem of the app rendering twice, which results in "skipping" one item wheni swiping, as seen in the video above.
+### The Main Problem is ...
+
+- I Need help in fixing the problem of the app rendering twice, which results in "skipping" one item when swiping, as seen in the video above.
