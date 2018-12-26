@@ -11,7 +11,7 @@ When you run the app, it displays the first company profile, and you can go to t
 <!-- https://gifs.com/gif/cordova-backbone-app-multiple-rendering-issues-rRQYj6 -->
 <!-- https://www.youtube.com/watch?v=1pKQNJ7rhh8 -->
 
-[![Cordova Backbone App Demo -- Multiple Rendering Problem](https://gifs.com/gif/cordova-backbone-app-multiple-rendering-issues-rRQYj6)](https://www.youtube.com/watch?v=1pKQNJ7rhh8)
+[![Cordova Backbone App Demo -- Multiple Rendering Problem](https://j.gifs.com/rRQYj6.gif)](https://www.youtube.com/watch?v=1pKQNJ7rhh8)
 
 
 ### Initial Setup
