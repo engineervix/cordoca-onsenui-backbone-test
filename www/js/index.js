@@ -32,13 +32,6 @@ $(function () {
 
         // console.log('Received Event: ' + id);
         // console.log('Status Bar: ' + StatusBar);
-        // console.log('Using:' + localforage.driver());
-
-        var all_content;
-        $.getJSON("data/company_data.json", function (data) {
-            all_content = data.companies;
-            app.theCompanies.reset(all_content);
-        });
 
     };
 

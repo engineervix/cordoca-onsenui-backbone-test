@@ -10,11 +10,9 @@ $(function () {
         el: $('.the-app'),
 
         initialize: function () {
-            this.collection.bind("reset", this.render, this);
             this.template = _.template($("#home")
                 .html());
-
-            this.render();
+            this.collection.bind("reset", this.render, this);
         },
 
         render: function () {

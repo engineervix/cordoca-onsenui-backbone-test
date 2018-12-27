@@ -6,12 +6,12 @@ The fake company data was generated courtesy of **joke2k**'s [Faker](https://git
 
 I used the [Bootstrapping](http://backbonejs.org/#FAQ-bootstrap) approach to have the data available when rendering the page.
 
-When you run the app, it displays the first company profile, and you can go to the next one on `leftswipe`. Similarly, you can display the previous one on `rightswipe`. Well, at least this is what is supposed to happen, but :disappointed: ... see what's actually happening below
+When you run the app, it displays the first company profile, and you can go to the next one on `leftswipe`. Similarly, you can display the previous one on `rightswipe`. See what's actually happening below
 
-<!-- https://gifs.com/gif/cordova-backbone-app-multiple-rendering-issues-rRQYj6 -->
-<!-- https://www.youtube.com/watch?v=1pKQNJ7rhh8 -->
+<!-- https://gifs.com/gif/cordova-demo-using-backbone-js-and-onsenui-kZJ6VE -->
+<!-- https://www.youtube.com/watch?v=o0STeZyRYaE -->
 
-[![Cordova Backbone App Demo -- Multiple Rendering Problem](https://j.gifs.com/rRQYj6.gif)](https://www.youtube.com/watch?v=1pKQNJ7rhh8)
+[![Cordova Backbone App Demo -- Multiple Rendering Problem](https://j.gifs.com/kZJ6VE.gif)](https://www.youtube.com/watch?v=o0STeZyRYaE)
 
 
 ### Initial Setup
@@ -21,6 +21,9 @@ git clone https://github.com/engineervix/cordova-onsenui-backbone-test
 cd cordova-onsenui-backbone-test
 
 npm install
+
+cordova plugin add cordova-plugin-statusbar
+cordova plugin add cordova-plugin-splashscreen
 
 cordova platform add android
 cordova platform add browser
@@ -45,8 +48,3 @@ adb logcat | grep -i "chromium:"
 # 2. in the browser
 cordova run browser
 ```
-
-
-### The Main Problem is ...
-
-- I Need help in fixing the problem of the app rendering twice, which results in "skipping" one item when swiping, as seen in the video above.
