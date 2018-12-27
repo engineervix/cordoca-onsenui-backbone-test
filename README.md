@@ -36,7 +36,6 @@ cordova platform add browser
 # 1. on your device or emulator
 cordova run android
 
-
 # 1.1 if you want to see logs (console output) from your device
 
 # 1.1.1 (optional) clear the logs
