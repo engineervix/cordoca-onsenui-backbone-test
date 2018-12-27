@@ -1,6 +1,6 @@
 ### About
 
-This is a simple Cordova app based on [backbone.js](http://backbonejs.org/) and [Onsen UI V2](https://onsen.io/). The app displays fictitious "company profiles", whose data is provided by this [JSON file](./www/data/company_data.json).
+This is a simple Cordova app based on [backbone.js](http://backbonejs.org/) and [Onsen UI V2](https://onsen.io/). The app is for testing / learning purposes and displays fictitious "company profiles", whose data is provided by this [JSON file](./www/data/company_data.json).
 
 The fake company data was generated courtesy of **joke2k**'s [Faker](https://github.com/joke2k/faker) package. [This](./www/data/faker_gen.py) is the python script that I wrote to generate this data.
 
