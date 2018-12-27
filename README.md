@@ -36,12 +36,12 @@ cordova platform add browser
 # 1. on your device or emulator
 cordova run android
 
-# 1.1 if you want to see logs (console output) from your device
+# * if you want to see logs (console output) from your device
 
-# 1.1.1 (optional) clear the logs
+# ** (optional) clear the logs before `cordova run android`
 adb logcat -c
 
-# 1.1.2 show the console output
+# ** show the console output
 adb logcat | grep -i "chromium:"
 
 # 2. in the browser
